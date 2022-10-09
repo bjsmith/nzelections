@@ -1,0 +1,192 @@
+---
+title: "elections across time"
+author: "Ben Smith"
+date: "2022-10-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## 1999
+
+1999 data would need to be reformatted. we'll leave it for now.
+```{r}
+
+# library(tidyverse)
+# #what if we applied the actual quotient method?
+# source("sl-method.R")
+# party_votes<- readr::read_csv("../../data/partiv_1999.csv",skip = 1)
+# electorate_votes_winners<- readr::read_csv("../../data/partvi_1999.csv",skip = 1)
+# #data cleaning
+# electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
+# colnames(party_votes)[1]<-"Electorate"
+# 
+# 
+# 
+# total_enrolled<- data.frame("General"=2837747,"Maori"=233100)
+# 
+# print_summary_mg_report(
+#   party_votes =party_votes, 
+#   electorate_votes_winners=electorate_votes_winners,
+#   total_enrolled=total_enrolled)
+
+```
+
+## 2002
+
+
+```{r}
+library(tidyverse)
+#what if we applied the actual quotient method?
+source("sl-method.R")
+party_votes<- readr::read_csv("../../data/e9_part4_2002.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("../../data/e9_part6_2002.csv",skip = 1)
+#data cleaning
+electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
+colnames(party_votes)[1]<-"Electorate"
+
+
+
+total_enrolled<- data.frame("General"=2475916,"Maori"=194114)
+
+print_summary_mg_report(
+  party_votes =party_votes, 
+  electorate_votes_winners=electorate_votes_winners,
+  total_enrolled=total_enrolled)
+
+```
+
+## 2005
+
+
+```{r}
+library(tidyverse)
+#what if we applied the actual quotient method?
+source("sl-method.R")
+party_votes<- readr::read_csv("../../data/e9_part4_2005.csv")
+electorate_votes_winners<- readr::read_csv("../../data/e9_part6_2005.csv",skip = 1)
+#data cleaning
+electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
+colnames(party_votes)[1]<-"Electorate"
+
+
+
+total_enrolled<- data.frame("General"=2639393,"Maori"=208003)
+
+print_summary_mg_report(
+  party_votes =party_votes, 
+  electorate_votes_winners=electorate_votes_winners,
+  total_enrolled=total_enrolled)
+
+```
+
+## 2008
+
+```{r}
+library(tidyverse)
+#what if we applied the actual quotient method?
+source("sl-method.R")
+party_votes<- readr::read_csv("../../data/e9_part4_2008.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("../../data/e9_part6_2008.csv",skip = 1)
+#data cleaning
+electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
+colnames(party_votes)[1]<-"Electorate"
+
+
+
+total_enrolled<- data.frame("General"=2761093,"Maori"=229666)
+
+print_summary_mg_report(
+  party_votes =party_votes, 
+  electorate_votes_winners=electorate_votes_winners,
+  total_enrolled=total_enrolled)
+
+```
+
+## 2011
+
+```{r}
+library(tidyverse)
+#what if we applied the actual quotient method?
+source("sl-method.R")
+party_votes<- readr::read_csv("../../data/e9_part4_2011_parties.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("../../data/e9_part6_2011_electorates.csv",skip = 1)
+#data cleaning
+electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
+colnames(party_votes)[1]<-"Electorate"
+
+
+
+total_enrolled<- data.frame("General"=2837747,"Maori"=233100)
+
+print_summary_mg_report(
+  party_votes =party_votes, 
+  electorate_votes_winners=electorate_votes_winners,
+  total_enrolled=total_enrolled)
+  
+print("In this scenario, Maori party would end up with one more seat than shown, because they won three list seats in 2011.")
+
+```
+
+
+## 2014
+
+```{r}
+party_votes<- readr::read_csv("../../data/e9_part4.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("../../data/e9_part6.csv",skip = 1)
+#data cleaning
+electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
+colnames(party_votes)[1]<-"Electorate"
+total_enrolled<- data.frame("General"=2900476,"Maori"=239941 )
+
+
+print_summary_mg_report(
+  party_votes =party_votes, 
+  electorate_votes_winners=electorate_votes_winners,
+  total_enrolled=total_enrolled)
+
+```
+
+
+
+## 2017
+
+
+```{r}
+
+party_votes<- readr::read_csv("../../data/votes-for-registered-parties-by-electorate_2017.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("../../data/winning-electorate-candidates_2017.csv",skip = 1)
+
+#colnames(party_votes)[1]<-"Electorate"
+total_enrolled<- data.frame("General"=3046216,"Māori"=251793 )
+
+print_summary_mg_report(
+  party_votes =party_votes, 
+  electorate_votes_winners=electorate_votes_winners,
+  total_enrolled=total_enrolled)
+
+```
+
+
+
+
+## 2020
+
+
+```{r}
+
+party_votes_2020<- readr::read_csv("../../data/votes-for-registered-parties-by-electorate_2020.csv",skip = 1)
+electorate_votes_winners_2020<- readr::read_csv("../../data/winning-electorate-candidates_2020.csv",skip = 1)
+
+#colnames(party_votes)[1]<-"Electorate"
+total_enrolled<- data.frame("General"=3273567,"Māori"=276013 )
+
+print_summary_mg_report(
+  party_votes =party_votes_2020, 
+  electorate_votes_winners=electorate_votes_winners_2020,
+  total_enrolled=total_enrolled)
+
+```
