@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+source("sl-method.R")
 ```
 
 
@@ -18,8 +19,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # library(tidyverse)
 # #what if we applied the actual quotient method?
 # source("sl-method.R")
-# party_votes<- readr::read_csv("../../data/partiv_1999.csv",skip = 1)
-# electorate_votes_winners<- readr::read_csv("../../data/partvi_1999.csv",skip = 1)
+# party_votes<- readr::read_csv("data/partiv_1999.csv",skip = 1)
+# electorate_votes_winners<- readr::read_csv("data/partvi_1999.csv",skip = 1)
 # #data cleaning
 # electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
 # colnames(party_votes)[1]<-"Electorate"
@@ -41,9 +42,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(tidyverse)
 #what if we applied the actual quotient method?
-source("sl-method.R")
-party_votes<- readr::read_csv("../../data/e9_part4_2002.csv",skip = 1)
-electorate_votes_winners<- readr::read_csv("../../data/e9_part6_2002.csv",skip = 1)
+
+party_votes<- readr::read_csv("data/e9_part4_2002.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("data/e9_part6_2002.csv",skip = 1)
 #data cleaning
 electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
 colnames(party_votes)[1]<-"Electorate"
@@ -51,11 +52,11 @@ colnames(party_votes)[1]<-"Electorate"
 
 
 total_enrolled<- data.frame("General"=2475916,"Maori"=194114)
-
+electoral_population <- data.frame("General"=3366578,"Māori"=371765 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)
+  total_enrolled=electoral_population)
 
 ```
 
@@ -65,9 +66,9 @@ print_summary_mg_report(
 ```{r}
 library(tidyverse)
 #what if we applied the actual quotient method?
-source("sl-method.R")
-party_votes<- readr::read_csv("../../data/e9_part4_2005.csv")
-electorate_votes_winners<- readr::read_csv("../../data/e9_part6_2005.csv",skip = 1)
+#source("sl-method.R")
+party_votes<- readr::read_csv("data/e9_part4_2005.csv")
+electorate_votes_winners<- readr::read_csv("data/e9_part6_2005.csv",skip = 1)
 #data cleaning
 electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
 colnames(party_votes)[1]<-"Electorate"
@@ -75,11 +76,11 @@ colnames(party_votes)[1]<-"Electorate"
 
 
 total_enrolled<- data.frame("General"=2639393,"Maori"=208003)
-
+electoral_population <- data.frame("General"=3366578,"Māori"=371765 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)
+  total_enrolled=electoral_population)
 
 ```
 
@@ -89,8 +90,8 @@ print_summary_mg_report(
 library(tidyverse)
 #what if we applied the actual quotient method?
 source("sl-method.R")
-party_votes<- readr::read_csv("../../data/e9_part4_2008.csv",skip = 1)
-electorate_votes_winners<- readr::read_csv("../../data/e9_part6_2008.csv",skip = 1)
+party_votes<- readr::read_csv("data/e9_part4_2008.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("data/e9_part6_2008.csv",skip = 1)
 #data cleaning
 electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
 colnames(party_votes)[1]<-"Electorate"
@@ -98,11 +99,11 @@ colnames(party_votes)[1]<-"Electorate"
 
 
 total_enrolled<- data.frame("General"=2761093,"Maori"=229666)
-
+electoral_population <- data.frame("General"=3612868,"Māori"=416750 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)
+  total_enrolled=electoral_population)
 
 ```
 
@@ -112,8 +113,8 @@ print_summary_mg_report(
 library(tidyverse)
 #what if we applied the actual quotient method?
 source("sl-method.R")
-party_votes<- readr::read_csv("../../data/e9_part4_2011_parties.csv",skip = 1)
-electorate_votes_winners<- readr::read_csv("../../data/e9_part6_2011_electorates.csv",skip = 1)
+party_votes<- readr::read_csv("data/e9_part4_2011_parties.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("data/e9_part6_2011_electorates.csv",skip = 1)
 #data cleaning
 electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
 colnames(party_votes)[1]<-"Electorate"
@@ -121,11 +122,11 @@ colnames(party_votes)[1]<-"Electorate"
 
 
 total_enrolled<- data.frame("General"=2837747,"Maori"=233100)
-
+electoral_population <- data.frame("General"=3612868,"Māori"=416750 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)
+  total_enrolled=electoral_population)
   
 print("In this scenario, Maori party would end up with one more seat than shown, because they won three list seats in 2011.")
 
@@ -135,18 +136,18 @@ print("In this scenario, Maori party would end up with one more seat than shown,
 ## 2014
 
 ```{r}
-party_votes<- readr::read_csv("../../data/e9_part4.csv",skip = 1)
-electorate_votes_winners<- readr::read_csv("../../data/e9_part6.csv",skip = 1)
+party_votes<- readr::read_csv("data/e9_part4.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("data/e9_part6.csv",skip = 1)
 #data cleaning
 electorate_votes_winners$Party<-toupper(electorate_votes_winners$Party)
 colnames(party_votes)[1]<-"Electorate"
 total_enrolled<- data.frame("General"=2900476,"Maori"=239941 )
 
-
+electoral_population <- data.frame("General"=3824424,"Māori"=419931 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)
+  total_enrolled=electoral_population)
 
 ```
 
@@ -157,16 +158,17 @@ print_summary_mg_report(
 
 ```{r}
 
-party_votes<- readr::read_csv("../../data/votes-for-registered-parties-by-electorate_2017.csv",skip = 1)
-electorate_votes_winners<- readr::read_csv("../../data/winning-electorate-candidates_2017.csv",skip = 1)
+party_votes<- readr::read_csv("data/votes-for-registered-parties-by-electorate_2017.csv",skip = 1)
+electorate_votes_winners<- readr::read_csv("data/winning-electorate-candidates_2017.csv",skip = 1)
 
 #colnames(party_votes)[1]<-"Electorate"
 total_enrolled<- data.frame("General"=3046216,"Māori"=251793 )
 
+electoral_population <- data.frame("General"=3824424,"Māori"=419931 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)
+  total_enrolled=electoral_population)
 
 ```
 
@@ -175,18 +177,24 @@ print_summary_mg_report(
 
 ## 2020
 
+```{r}
+electoral_population<-data.frame("General"=4221168,"Māori"=473046)
+print(electoral_population/sum(electoral_population))
+print(electoral_population/sum(electoral_population)*120)
+```
 
 ```{r}
 
-party_votes_2020<- readr::read_csv("../../data/votes-for-registered-parties-by-electorate_2020.csv",skip = 1)
-electorate_votes_winners_2020<- readr::read_csv("../../data/winning-electorate-candidates_2020.csv",skip = 1)
+party_votes_2020<- readr::read_csv("data/votes-for-registered-parties-by-electorate_2020.csv",skip = 1)
+electorate_votes_winners_2020<- readr::read_csv("data/winning-electorate-candidates_2020.csv",skip = 1)
 
 #colnames(party_votes)[1]<-"Electorate"
 total_enrolled<- data.frame("General"=3273567,"Māori"=276013 )
 
+
 print_summary_mg_report(
   party_votes =party_votes_2020, 
   electorate_votes_winners=electorate_votes_winners_2020,
-  total_enrolled=total_enrolled)
+  total_enrolled=electoral_population)
 
 ```

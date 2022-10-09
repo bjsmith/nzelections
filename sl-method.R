@@ -101,7 +101,6 @@ print_summary_mg_report <- function(party_votes,total_enrolled, electorate_votes
     party_votes %>% filter(Electorate %in% c("General Electorate Totals","Maori Electorate Totals"))
   )
   
-  colnames(total_enrolled)[colnames(total_enrolled)=="Māori"]<-"Maori"
   
   #determine parties who will be included in the count (5% or won an electorate)
   all_total<-party_votes[nrow(party_votes),]
@@ -141,6 +140,7 @@ print_summary_mg_report <- function(party_votes,total_enrolled, electorate_votes
   print("CURRENT SYSTEM")
   current_system_raw<-sl_method(colSums(winning_party_mg_totals[parties_in_parliament]),seats=120)
   current_system<-get_combined_seat_entitlement(current_system_raw,electorate_votes_winners)
+  print(paste0("Total (",as.character(sum(current_system)),")"))
   print(current_system)
   
   print("PROPOSED: separate maori and list, with maori vote reallocation")
@@ -148,7 +148,7 @@ print_summary_mg_report <- function(party_votes,total_enrolled, electorate_votes
   maori <- sl_method(winning_party_maori_totals_with_reallocation,seats=seats_maori)
   new_totals_raw<-(general+maori)
   new_totals<-get_combined_seat_entitlement(new_totals_raw,electorate_votes_winners)
-  print("Total")
+  print(paste0("Total (",as.character(sum(new_totals)),")"))
   print(new_totals)
   print("Maori")
   print(maori)

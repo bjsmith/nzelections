@@ -369,8 +369,8 @@ display: none;
 <pre class="r"><code># library(tidyverse)
 # #what if we applied the actual quotient method?
 # source(&quot;sl-method.R&quot;)
-# party_votes&lt;- readr::read_csv(&quot;../../data/partiv_1999.csv&quot;,skip = 1)
-# electorate_votes_winners&lt;- readr::read_csv(&quot;../../data/partvi_1999.csv&quot;,skip = 1)
+# party_votes&lt;- readr::read_csv(&quot;data/partiv_1999.csv&quot;,skip = 1)
+# electorate_votes_winners&lt;- readr::read_csv(&quot;data/partvi_1999.csv&quot;,skip = 1)
 # #data cleaning
 # electorate_votes_winners$Party&lt;-toupper(electorate_votes_winners$Party)
 # colnames(party_votes)[1]&lt;-&quot;Electorate&quot;
@@ -396,8 +396,8 @@ display: none;
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>#what if we applied the actual quotient method?
-source(&quot;sl-method.R&quot;)
-party_votes&lt;- readr::read_csv(&quot;../../data/e9_part4_2002.csv&quot;,skip = 1)</code></pre>
+
+party_votes&lt;- readr::read_csv(&quot;data/e9_part4_2002.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 72 Columns: 17
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -406,7 +406,7 @@ party_votes&lt;- readr::read_csv(&quot;../../data/e9_part4_2002.csv&quot;,skip =
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;../../data/e9_part6_2002.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;data/e9_part6_2002.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 69 Columns: 7
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -422,20 +422,21 @@ colnames(party_votes)[1]&lt;-&quot;Electorate&quot;
 
 
 total_enrolled&lt;- data.frame(&quot;General&quot;=2475916,&quot;Maori&quot;=194114)
-
+electoral_population &lt;- data.frame(&quot;General&quot;=3366578,&quot;Māori&quot;=371765 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)</code></pre>
+  total_enrolled=electoral_population)</code></pre>
 <pre><code>## [1] &quot;separate maori and list&quot;
 ##                   ACT           GREEN.PARTY          LABOUR.PARTY 
-##                     9                     9                    52 
+##                     9                     9                    53 
 ##        NATIONAL.PARTY              NZ.FIRST PROGRESSIVE.COALITION 
-##                    26                    14                     2 
+##                    26                    13                     2 
 ##         UNITED.FUTURE 
 ##                     8 
-## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0830027715672235&quot;
+## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.07823102856195&quot;
 ## [1] &quot;CURRENT SYSTEM&quot;
+## [1] &quot;Total (120)&quot;
 ##                   ACT           GREEN.PARTY          LABOUR.PARTY 
 ##                     9                     9                    52 
 ##        NATIONAL.PARTY              NZ.FIRST PROGRESSIVE.COALITION 
@@ -443,32 +444,32 @@ print_summary_mg_report(
 ##         UNITED.FUTURE 
 ##                     8 
 ## [1] &quot;PROPOSED: separate maori and list, with maori vote reallocation&quot;
-## [1] &quot;Total&quot;
+## [1] &quot;Total (120)&quot;
 ##                   ACT           GREEN.PARTY          LABOUR.PARTY 
-##                     9                     9                    53 
+##                     8                     9                    53 
 ##        NATIONAL.PARTY              NZ.FIRST PROGRESSIVE.COALITION 
-##                    25                    14                     2 
+##                    26                    14                     2 
 ##         UNITED.FUTURE 
 ##                     8 
 ## [1] &quot;Maori&quot;
 ##          LABOUR PARTY        NATIONAL PARTY         UNITED FUTURE 
-##                     5                     0                     0 
+##                     7                     1                     0 
 ##              NZ FIRST PROGRESSIVE COALITION                   ACT 
 ##                     2                     0                     0 
 ##           GREEN PARTY 
 ##                     1 
 ## [1] &quot;General&quot;
 ##          LABOUR PARTY        NATIONAL PARTY         UNITED FUTURE 
-##                    48                    25                     8 
+##                    46                    25                     8 
 ##              NZ FIRST PROGRESSIVE COALITION                   ACT 
-##                    12                     2                     9 
+##                    12                     2                     8 
 ##           GREEN PARTY 
 ##                     8 
 ## [1] &quot;PARTY SEAT CHANGES&quot;
 ##                   ACT           GREEN.PARTY          LABOUR.PARTY 
-##                     0                     0                     1 
+##                    -1                     0                     1 
 ##        NATIONAL.PARTY              NZ.FIRST PROGRESSIVE.COALITION 
-##                    -2                     1                     0 
+##                    -1                     1                     0 
 ##         UNITED.FUTURE 
 ##                     0 
 ## [1] &quot;difference in proportion of Maori roll voters and general roll voters voting for each party&quot;
@@ -486,7 +487,7 @@ print_summary_mg_report(
 <pre class="r"><code>library(tidyverse)
 #what if we applied the actual quotient method?
 source(&quot;sl-method.R&quot;)
-party_votes&lt;- readr::read_csv(&quot;../../data/e9_part4_2005.csv&quot;)</code></pre>
+party_votes&lt;- readr::read_csv(&quot;data/e9_part4_2005.csv&quot;)</code></pre>
 <pre><code>## Rows: 72 Columns: 22
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -495,7 +496,7 @@ party_votes&lt;- readr::read_csv(&quot;../../data/e9_part4_2005.csv&quot;)</code
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;../../data/e9_part6_2005.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;data/e9_part6_2005.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 69 Columns: 7
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -511,22 +512,23 @@ colnames(party_votes)[1]&lt;-&quot;Electorate&quot;
 
 
 total_enrolled&lt;- data.frame(&quot;General&quot;=2639393,&quot;Maori&quot;=208003)
-
+electoral_population &lt;- data.frame(&quot;General&quot;=3366578,&quot;Māori&quot;=371765 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)</code></pre>
+  total_enrolled=electoral_population)</code></pre>
 <pre><code>## [1] &quot;separate maori and list&quot;
 ##            ACT.NEW.ZEALAND                GREEN.PARTY 
 ##                          2                          6 
 ## JIM.ANDERTON&#39;S.PROGRESSIVE               LABOUR.PARTY 
-##                          1                         51 
+##                          1                         50 
 ##                MAORI.PARTY             NATIONAL.PARTY 
 ##                          4                         47 
 ##    NEW.ZEALAND.FIRST.PARTY  UNITED.FUTURE.NEW.ZEALAND 
 ##                          7                          3 
-## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0873862396215438&quot;
+## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.07823102856195&quot;
 ## [1] &quot;CURRENT SYSTEM&quot;
+## [1] &quot;Total (122)&quot;
 ##            ACT.NEW.ZEALAND                GREEN.PARTY 
 ##                          2                          6 
 ## JIM.ANDERTON.S.PROGRESSIVE JIM.ANDERTON&#39;S.PROGRESSIVE 
@@ -538,27 +540,27 @@ print_summary_mg_report(
 ##  UNITED.FUTURE.NEW.ZEALAND 
 ##                          3 
 ## [1] &quot;PROPOSED: separate maori and list, with maori vote reallocation&quot;
-## [1] &quot;Total&quot;
+## [1] &quot;Total (120)&quot;
 ##            ACT.NEW.ZEALAND                GREEN.PARTY 
 ##                          2                          6 
 ## JIM.ANDERTON&#39;S.PROGRESSIVE               LABOUR.PARTY 
 ##                          1                         51 
 ##                MAORI.PARTY             NATIONAL.PARTY 
-##                          4                         47 
+##                          4                         46 
 ##    NEW.ZEALAND.FIRST.PARTY  UNITED.FUTURE.NEW.ZEALAND 
 ##                          7                          3 
 ## [1] &quot;Maori&quot;
 ##             NATIONAL PARTY               LABOUR PARTY 
-##                          0                          5 
+##                          1                          6 
 ##            ACT NEW ZEALAND  UNITED FUTURE NEW ZEALAND 
 ##                          0                          0 
 ## JIM ANDERTON&#39;S PROGRESSIVE                MAORI PARTY 
-##                          0                          2 
+##                          0                          3 
 ##                GREEN PARTY    NEW ZEALAND FIRST PARTY 
 ##                          0                          1 
 ## [1] &quot;General&quot;
 ##             NATIONAL PARTY               LABOUR PARTY 
-##                         47                         46 
+##                         45                         45 
 ##            ACT NEW ZEALAND  UNITED FUTURE NEW ZEALAND 
 ##                          2                          3 
 ## JIM ANDERTON&#39;S PROGRESSIVE                MAORI PARTY 
@@ -573,7 +575,7 @@ print_summary_mg_report(
 ## JIM.ANDERTON.S.PROGRESSIVE JIM.ANDERTON&#39;S.PROGRESSIVE 
 ##                          0                         50 
 ##               LABOUR.PARTY                MAORI.PARTY 
-##                        -46                         43 
+##                        -46                         42 
 ##             NATIONAL.PARTY    NEW.ZEALAND.FIRST.PARTY 
 ##                        -41                         -4 
 ##  UNITED.FUTURE.NEW.ZEALAND 
@@ -594,7 +596,7 @@ print_summary_mg_report(
 <pre class="r"><code>library(tidyverse)
 #what if we applied the actual quotient method?
 source(&quot;sl-method.R&quot;)
-party_votes&lt;- readr::read_csv(&quot;../../data/e9_part4_2008.csv&quot;,skip = 1)</code></pre>
+party_votes&lt;- readr::read_csv(&quot;data/e9_part4_2008.csv&quot;,skip = 1)</code></pre>
 <pre><code>## New names:
 ## • `` -&gt; `...1`</code></pre>
 <pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for details,
@@ -609,7 +611,7 @@ party_votes&lt;- readr::read_csv(&quot;../../data/e9_part4_2008.csv&quot;,skip =
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;../../data/e9_part6_2008.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;data/e9_part6_2008.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 70 Columns: 7
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -625,22 +627,23 @@ colnames(party_votes)[1]&lt;-&quot;Electorate&quot;
 
 
 total_enrolled&lt;- data.frame(&quot;General&quot;=2761093,&quot;Maori&quot;=229666)
-
+electoral_population &lt;- data.frame(&quot;General&quot;=3612868,&quot;Māori&quot;=416750 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)</code></pre>
+  total_enrolled=electoral_population)</code></pre>
 <pre><code>## [1] &quot;separate maori and list&quot;
 ##            ACT.NEW.ZEALAND                GREEN.PARTY 
-##                          5                          8 
+##                          4                          9 
 ## JIM.ANDERTON&#39;S.PROGRESSIVE               LABOUR.PARTY 
 ##                          1                         44 
 ##                MAORI.PARTY             NATIONAL.PARTY 
-##                          5                         57 
+##                          5                         56 
 ##              UNITED.FUTURE 
 ##                          1 
-## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0233342114200622&quot;
+## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0330850629874026&quot;
 ## [1] &quot;CURRENT SYSTEM&quot;
+## [1] &quot;Total (123)&quot;
 ##            ACT.NEW.ZEALAND                GREEN.PARTY 
 ##                          5                          9 
 ## JIM.ANDERTON.S.PROGRESSIVE JIM.ANDERTON&#39;S.PROGRESSIVE 
@@ -650,29 +653,29 @@ print_summary_mg_report(
 ##             NATIONAL.PARTY              UNITED.FUTURE 
 ##                         58                          1 
 ## [1] &quot;PROPOSED: separate maori and list, with maori vote reallocation&quot;
-## [1] &quot;Total&quot;
+## [1] &quot;Total (120)&quot;
 ##            ACT.NEW.ZEALAND                GREEN.PARTY 
-##                          5                          8 
+##                          4                          9 
 ## JIM.ANDERTON&#39;S.PROGRESSIVE               LABOUR.PARTY 
 ##                          1                         44 
 ##                MAORI.PARTY             NATIONAL.PARTY 
-##                          5                         57 
+##                          5                         56 
 ##              UNITED.FUTURE 
 ##                          1 
 ## [1] &quot;Maori&quot;
 ##             NATIONAL PARTY               LABOUR PARTY 
-##                          1                          5 
+##                          1                          6 
 ##            ACT NEW ZEALAND              UNITED FUTURE 
 ##                          0                          0 
 ## JIM ANDERTON&#39;S PROGRESSIVE                MAORI PARTY 
-##                          0                          3 
+##                          0                          4 
 ##                GREEN PARTY 
-##                          0 
+##                          1 
 ## [1] &quot;General&quot;
 ##             NATIONAL PARTY               LABOUR PARTY 
-##                         56                         39 
+##                         55                         38 
 ##            ACT NEW ZEALAND              UNITED FUTURE 
-##                          5                          1 
+##                          4                          1 
 ## JIM ANDERTON&#39;S PROGRESSIVE                MAORI PARTY 
 ##                          1                          1 
 ##                GREEN PARTY 
@@ -681,13 +684,13 @@ print_summary_mg_report(
 <pre><code>## Warning in new_totals - current_system: longer object length is not a multiple
 ## of shorter object length</code></pre>
 <pre><code>##            ACT.NEW.ZEALAND                GREEN.PARTY 
-##                          0                         -1 
+##                         -1                          0 
 ## JIM.ANDERTON.S.PROGRESSIVE JIM.ANDERTON&#39;S.PROGRESSIVE 
 ##                          0                         43 
 ##               LABOUR.PARTY                MAORI.PARTY 
-##                        -38                         52 
+##                        -38                         51 
 ##             NATIONAL.PARTY              UNITED.FUTURE 
-##                        -57                          4 
+##                        -57                          3 
 ## [1] &quot;difference in proportion of Maori roll voters and general roll voters voting for each party&quot;
 ##                                    [,1]
 ## NATIONAL PARTY             -0.423500741
@@ -703,7 +706,7 @@ print_summary_mg_report(
 <pre class="r"><code>library(tidyverse)
 #what if we applied the actual quotient method?
 source(&quot;sl-method.R&quot;)
-party_votes&lt;- readr::read_csv(&quot;../../data/e9_part4_2011_parties.csv&quot;,skip = 1)</code></pre>
+party_votes&lt;- readr::read_csv(&quot;data/e9_part4_2011_parties.csv&quot;,skip = 1)</code></pre>
 <pre><code>## New names:
 ## • `` -&gt; `...1`</code></pre>
 <pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for details,
@@ -718,7 +721,7 @@ party_votes&lt;- readr::read_csv(&quot;../../data/e9_part4_2011_parties.csv&quot
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;../../data/e9_part6_2011_electorates.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;data/e9_part6_2011_electorates.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 70 Columns: 7
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -734,20 +737,21 @@ colnames(party_votes)[1]&lt;-&quot;Electorate&quot;
 
 
 total_enrolled&lt;- data.frame(&quot;General&quot;=2837747,&quot;Maori&quot;=233100)
-
+electoral_population &lt;- data.frame(&quot;General&quot;=3612868,&quot;Māori&quot;=416750 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)</code></pre>
+  total_enrolled=electoral_population)</code></pre>
 <pre><code>## [1] &quot;separate maori and list&quot;
 ##         ACT.NEW.ZEALAND             GREEN.PARTY            LABOUR.PARTY 
-##                       1                      14                      35 
+##                       1                      13                      35 
 ##                    MANA             MĀORI.PARTY          NATIONAL.PARTY 
-##                       1                       3                      58 
+##                       2                       3                      57 
 ## NEW.ZEALAND.FIRST.PARTY           UNITED.FUTURE 
 ##                       8                       1 
-## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0119539897039897&quot;
+## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0330850629874026&quot;
 ## [1] &quot;CURRENT SYSTEM&quot;
+## [1] &quot;Total (121)&quot;
 ##         ACT.NEW.ZEALAND             GREEN.PARTY            LABOUR.PARTY 
 ##                       1                      14                      34 
 ##                    MANA             MĀORI.PARTY          NATIONAL.PARTY 
@@ -755,32 +759,32 @@ print_summary_mg_report(
 ## NEW.ZEALAND.FIRST.PARTY           UNITED.FUTURE 
 ##                       8                       1 
 ## [1] &quot;PROPOSED: separate maori and list, with maori vote reallocation&quot;
-## [1] &quot;Total&quot;
+## [1] &quot;Total (120)&quot;
 ##         ACT.NEW.ZEALAND             GREEN.PARTY            LABOUR.PARTY 
-##                       1                      14                      35 
+##                       1                      13                      35 
 ##                    MANA             MĀORI.PARTY          NATIONAL.PARTY 
-##                       1                       3                      58 
+##                       2                       3                      57 
 ## NEW.ZEALAND.FIRST.PARTY           UNITED.FUTURE 
 ##                       8                       1 
 ## [1] &quot;Maori&quot;
 ##          NATIONAL PARTY            LABOUR PARTY         ACT NEW ZEALAND 
-##                       1                       4                       0 
+##                       1                       5                       0 
 ##           UNITED FUTURE             MĀORI PARTY                    MANA 
-##                       0                       1                       1 
+##                       0                       2                       2 
 ##             GREEN PARTY NEW ZEALAND FIRST PARTY 
 ##                       1                       1 
 ## [1] &quot;General&quot;
 ##          NATIONAL PARTY            LABOUR PARTY         ACT NEW ZEALAND 
-##                      57                      31                       1 
+##                      56                      30                       1 
 ##           UNITED FUTURE             MĀORI PARTY                    MANA 
 ##                       1                       1                       0 
 ##             GREEN PARTY NEW ZEALAND FIRST PARTY 
-##                      13                       7 
+##                      12                       7 
 ## [1] &quot;PARTY SEAT CHANGES&quot;
 ##         ACT.NEW.ZEALAND             GREEN.PARTY            LABOUR.PARTY 
-##                       0                       0                       1 
+##                       0                      -1                       1 
 ##                    MANA             MĀORI.PARTY          NATIONAL.PARTY 
-##                       0                       0                      -1 
+##                       1                       0                      -2 
 ## NEW.ZEALAND.FIRST.PARTY           UNITED.FUTURE 
 ##                       0                       0 
 ## [1] &quot;difference in proportion of Maori roll voters and general roll voters voting for each party&quot;
@@ -798,7 +802,7 @@ print_summary_mg_report(
 </div>
 <div id="section-5" class="section level2">
 <h2>2014</h2>
-<pre class="r"><code>party_votes&lt;- readr::read_csv(&quot;../../data/e9_part4.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>party_votes&lt;- readr::read_csv(&quot;data/e9_part4.csv&quot;,skip = 1)</code></pre>
 <pre><code>## New names:
 ## • `` -&gt; `...1`</code></pre>
 <pre><code>## Warning: One or more parsing issues, call `problems()` on your data frame for details,
@@ -813,7 +817,7 @@ print_summary_mg_report(
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;../../data/e9_part6.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;data/e9_part6.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 71 Columns: 7
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -827,20 +831,21 @@ electorate_votes_winners$Party&lt;-toupper(electorate_votes_winners$Party)
 colnames(party_votes)[1]&lt;-&quot;Electorate&quot;
 total_enrolled&lt;- data.frame(&quot;General&quot;=2900476,&quot;Maori&quot;=239941 )
 
-
+electoral_population &lt;- data.frame(&quot;General&quot;=3824424,&quot;Māori&quot;=419931 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)</code></pre>
+  total_enrolled=electoral_population)</code></pre>
 <pre><code>## [1] &quot;separate maori and list&quot;
 ##         ACT.NEW.ZEALAND             GREEN.PARTY            LABOUR.PARTY 
-##                       1                      14                      32 
+##                       1                      13                      33 
 ##             MĀORI.PARTY          NATIONAL.PARTY NEW.ZEALAND.FIRST.PARTY 
-##                       3                      59                      11 
+##                       3                      58                      12 
 ##           UNITED.FUTURE 
 ##                       1 
-## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0183783721831618&quot;
+## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0735004679340178&quot;
 ## [1] &quot;CURRENT SYSTEM&quot;
+## [1] &quot;Total (121)&quot;
 ##         ACT.NEW.ZEALAND             GREEN.PARTY            LABOUR.PARTY 
 ##                       1                      14                      32 
 ##             MĀORI.PARTY          NATIONAL.PARTY NEW.ZEALAND.FIRST.PARTY 
@@ -848,32 +853,32 @@ print_summary_mg_report(
 ##           UNITED.FUTURE 
 ##                       1 
 ## [1] &quot;PROPOSED: separate maori and list, with maori vote reallocation&quot;
-## [1] &quot;Total&quot;
+## [1] &quot;Total (121)&quot;
 ##         ACT.NEW.ZEALAND             GREEN.PARTY            LABOUR.PARTY 
-##                       1                      14                      32 
+##                       1                      13                      33 
 ##             MĀORI.PARTY          NATIONAL.PARTY NEW.ZEALAND.FIRST.PARTY 
-##                       3                      59                      11 
+##                       3                      58                      12 
 ##           UNITED.FUTURE 
 ##                       1 
 ## [1] &quot;Maori&quot;
 ##          NATIONAL PARTY            LABOUR PARTY         ACT NEW ZEALAND 
-##                       1                       4                       0 
+##                       1                       5                       0 
 ##           UNITED FUTURE             MĀORI PARTY             GREEN PARTY 
 ##                       0                       2                       1 
 ## NEW ZEALAND FIRST PARTY 
-##                       1 
+##                       2 
 ## [1] &quot;General&quot;
 ##          NATIONAL PARTY            LABOUR PARTY         ACT NEW ZEALAND 
-##                      58                      28                       1 
+##                      57                      28                       1 
 ##           UNITED FUTURE             MĀORI PARTY             GREEN PARTY 
-##                       0                       1                      13 
+##                       0                       1                      12 
 ## NEW ZEALAND FIRST PARTY 
 ##                      10 
 ## [1] &quot;PARTY SEAT CHANGES&quot;
 ##         ACT.NEW.ZEALAND             GREEN.PARTY            LABOUR.PARTY 
-##                       0                       0                       0 
+##                       0                      -1                       1 
 ##             MĀORI.PARTY          NATIONAL.PARTY NEW.ZEALAND.FIRST.PARTY 
-##                       1                      -1                       0 
+##                       1                      -2                       1 
 ##           UNITED.FUTURE 
 ##                       0 
 ## [1] &quot;difference in proportion of Maori roll voters and general roll voters voting for each party&quot;
@@ -888,7 +893,7 @@ print_summary_mg_report(
 </div>
 <div id="section-6" class="section level2">
 <h2>2017</h2>
-<pre class="r"><code>party_votes&lt;- readr::read_csv(&quot;../../data/votes-for-registered-parties-by-electorate_2017.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>party_votes&lt;- readr::read_csv(&quot;data/votes-for-registered-parties-by-electorate_2017.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 74 Columns: 20
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -897,7 +902,7 @@ print_summary_mg_report(
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;../../data/winning-electorate-candidates_2017.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>electorate_votes_winners&lt;- readr::read_csv(&quot;data/winning-electorate-candidates_2017.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 71 Columns: 7
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -909,42 +914,44 @@ print_summary_mg_report(
 <pre class="r"><code>#colnames(party_votes)[1]&lt;-&quot;Electorate&quot;
 total_enrolled&lt;- data.frame(&quot;General&quot;=3046216,&quot;Māori&quot;=251793 )
 
+electoral_population &lt;- data.frame(&quot;General&quot;=3824424,&quot;Māori&quot;=419931 )
 print_summary_mg_report(
   party_votes =party_votes, 
   electorate_votes_winners=electorate_votes_winners,
-  total_enrolled=total_enrolled)</code></pre>
+  total_enrolled=electoral_population)</code></pre>
 <pre><code>## [1] &quot;separate maori and list&quot;
 ##         ACT.New.Zealand             Green.Party            Labour.Party 
-##                       1                       8                      47 
+##                       1                       8                      48 
 ##          National.Party New.Zealand.First.Party 
-##                      55                       9 
-## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0176427660816623&quot;
+##                      54                       9 
+## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.0735004679340178&quot;
 ## [1] &quot;CURRENT SYSTEM&quot;
+## [1] &quot;Total (120)&quot;
 ##         ACT.New.Zealand             Green.Party            Labour.Party 
 ##                       1                       8                      46 
 ##          National.Party New.Zealand.First.Party 
 ##                      56                       9 
 ## [1] &quot;PROPOSED: separate maori and list, with maori vote reallocation&quot;
-## [1] &quot;Total&quot;
+## [1] &quot;Total (120)&quot;
 ##         ACT.New.Zealand             Green.Party            Labour.Party 
-##                       1                       8                      47 
+##                       1                       8                      48 
 ##          National.Party New.Zealand.First.Party 
-##                      55                       9 
+##                      54                       9 
 ## [1] &quot;Maori&quot;
 ##          National Party            Labour Party         ACT New Zealand 
-##                       1                       6                       0 
+##                       1                       8                       0 
 ##             Green Party New Zealand First Party 
 ##                       1                       1 
 ## [1] &quot;General&quot;
 ##          National Party            Labour Party         ACT New Zealand 
-##                      54                      41                       1 
+##                      53                      40                       1 
 ##             Green Party New Zealand First Party 
 ##                       7                       8 
 ## [1] &quot;PARTY SEAT CHANGES&quot;
 ##         ACT.New.Zealand             Green.Party            Labour.Party 
-##                       0                       0                       1 
+##                       0                       0                       2 
 ##          National.Party New.Zealand.First.Party 
-##                      -1                       0 
+##                      -2                       0 
 ## [1] &quot;difference in proportion of Maori roll voters and general roll voters voting for each party&quot;
 ##                                 [,1]
 ## National Party          -0.400473321
@@ -955,7 +962,14 @@ print_summary_mg_report(
 </div>
 <div id="section-7" class="section level2">
 <h2>2020</h2>
-<pre class="r"><code>party_votes_2020&lt;- readr::read_csv(&quot;../../data/votes-for-registered-parties-by-electorate_2020.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>electoral_population&lt;-data.frame(&quot;General&quot;=4221168,&quot;Māori&quot;=473046)
+print(electoral_population/sum(electoral_population))</code></pre>
+<pre><code>##     General     Māori
+## 1 0.8992279 0.1007721</code></pre>
+<pre class="r"><code>print(electoral_population/sum(electoral_population)*120)</code></pre>
+<pre><code>##    General    Māori
+## 1 107.9073 12.09266</code></pre>
+<pre class="r"><code>party_votes_2020&lt;- readr::read_csv(&quot;data/votes-for-registered-parties-by-electorate_2020.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 75 Columns: 21
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -964,7 +978,7 @@ print_summary_mg_report(
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>electorate_votes_winners_2020&lt;- readr::read_csv(&quot;../../data/winning-electorate-candidates_2020.csv&quot;,skip = 1)</code></pre>
+<pre class="r"><code>electorate_votes_winners_2020&lt;- readr::read_csv(&quot;data/winning-electorate-candidates_2020.csv&quot;,skip = 1)</code></pre>
 <pre><code>## Rows: 72 Columns: 7
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -976,30 +990,32 @@ print_summary_mg_report(
 <pre class="r"><code>#colnames(party_votes)[1]&lt;-&quot;Electorate&quot;
 total_enrolled&lt;- data.frame(&quot;General&quot;=3273567,&quot;Māori&quot;=276013 )
 
+
 print_summary_mg_report(
   party_votes =party_votes_2020, 
   electorate_votes_winners=electorate_votes_winners_2020,
-  total_enrolled=total_enrolled)</code></pre>
+  total_enrolled=electoral_population)</code></pre>
 <pre><code>## [1] &quot;separate maori and list&quot;
 ## ACT.New.Zealand     Green.Party    Labour.Party     Māori.Party  National.Party 
-##              10              10              66               1              33 
-## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.035485647415158&quot;
+##               9              10              67               2              32 
+## [1] &quot;Proportion of all Māori roll votes that are re-allocated to general roll: 0.00766225694752731&quot;
 ## [1] &quot;CURRENT SYSTEM&quot;
+## [1] &quot;Total (120)&quot;
 ## ACT.New.Zealand     Green.Party    Labour.Party     Māori.Party  National.Party 
 ##              10              10              65               2              33 
 ## [1] &quot;PROPOSED: separate maori and list, with maori vote reallocation&quot;
-## [1] &quot;Total&quot;
+## [1] &quot;Total (120)&quot;
 ## ACT.New.Zealand     Green.Party    Labour.Party     Māori.Party  National.Party 
-##              10              10              66               1              33 
+##               9              10              67               2              32 
 ## [1] &quot;Maori&quot;
 ##     Green Party    Labour Party  National Party ACT New Zealand     Māori Party 
-##               1               7               0               0               1 
+##               1               9               0               0               2 
 ## [1] &quot;General&quot;
 ##     Green Party    Labour Party  National Party ACT New Zealand     Māori Party 
-##               9              59              33              10               0 
+##               9              58              32               9               0 
 ## [1] &quot;PARTY SEAT CHANGES&quot;
 ## ACT.New.Zealand     Green.Party    Labour.Party     Māori.Party  National.Party 
-##               0               0               1              -1               0 
+##              -1               0               2               0              -1 
 ## [1] &quot;difference in proportion of Maori roll voters and general roll voters voting for each party&quot;
 ##                         [,1]
 ## Green Party      0.006116132
